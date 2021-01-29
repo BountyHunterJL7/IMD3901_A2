@@ -1,0 +1,69 @@
+<html>
+    <head> 
+        <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+        <script src="https://unpkg.com/aframe-event-set-component@3.03/dist/aframe-event-set-component.min.js"></script>
+        <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+        <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+        <script src="/js/aframe.min.js"></script>
+        <script src="/js/new-orb.js"></script>
+        <script src="/js/remove-orb.js"></script>
+    </head>
+    <body>
+        <a-scene id = "scene" physics="gravity:0">
+            <a-entity camera wasd-controls look-controls position = "0 2.5 0">
+                <a-entity curser="rayOrigin:mouse;" raycaster = "far:20; interval:200; objects:.interactive"></a-entity>
+            </a-entity>
+            <audio id="music" src="/assets/song.mp3" preload="true" crossorigin="anonymous"></audio>
+            <a-entity progressive-controls></a-entity>
+            <a-entity position="0 0 0" sound="src:#music; autoplay:true;"></a-entity>
+            <!--<a-entity id = "box"
+                      position = "0 2.5 0"
+                      rotation = "0 0 0"
+                      geometry = "primative:box; width:5; height:5; depth:5;"
+                      material="color:#0000FF"
+                      clickable>
+                <a-animation attribute = "rotation" begin = "click" repeat = "indefinite" to = "0 360 0"></a-animation>
+            </a-entity>-->
+            <a-entity geometry="primitive: plane; height: 50; width: 50" rotation = "0 180 0" position = "0 0 20"  material="color:#8a9596" static-body></a-entity>
+            <a-entity geometry="primitive: plane; height: 50; width: 50" position = "0 0 -20"  material="color:#8a9596" static-body></a-entity>
+            <a-entity geometry="primitive: plane; height: 50; width: 50" rotation = "0 -90 0" position = "20 0 0"  material="color:#8a9596" static-body></a-entity>
+            <a-entity geometry="primitive: plane; height: 50; width: 50" rotation = "0 90 0" position = "-20 0 0"  material="color:#8a9596" static-body></a-entity>
+            <a-entity geometry="primitive: plane; height: 50; width: 50" rotation = "-90 0 0" position = "0 -2.5 0" material="color:#8a9596" static-body></a-entity>
+            <a-entity geometry="primitive: plane; height: 50; width: 50" rotation = "90 0 0" position = "0 10 0" material="color:#8a9596" static-body></a-entity>
+
+            <a-entity id = "button1"
+                        geometry = "primitive: cylinder; segmentsRadial: 10; radius:0.3; height:0.5;"
+                        position = "-1 0 0"
+                        material="color:#FF0000"
+                        animation__mouseenter = "property:material.color; type:color; to:#FFFFFF; dur:200; startEvents:cursorenter;"
+                        animation__mouseleave = "property:material.color; type:color; to:#ff0000; dur:200; startEvents:cursorleave;"
+                        animation__click = "property:position; from:-1 -0.3 0; to:-1 0 0; dur:200; startEvents:click;"
+                        remove-orb>
+            </a-entity>
+            <a-entity  id = "pedistal1"
+                    position = "-1 -1.5 0"
+                    rotation = "0 0 0"
+                    geometry = "primative:box; width:0.6; height:3; depth:0.6;"
+                    material="color:#484b4f">
+             </a-entity>
+
+             <a-entity 
+                        class ="interactive"
+                        id = "button2"
+                        geometry = "primitive: cylinder; segmentsRadial: 10; radius:0.3; height:0.5;"
+                        position = "1 0 0"
+                        material="color:#00ff00"
+                        animation__cursorenter = "property:material.color; type:color; to:#FFFFFF; dur:200; startEvents:cursorenter;"
+                        animation__mcursorleave = "property:material.color; type:color; to:#00ff00; dur:200; startEvents:cursorleave;"
+                        animation__click = "property:position; from:1 -0.3 0; to:1 0 0; dur:200; startEvents:click;"
+                        new-orb>
+            </a-entity>
+            <a-entity  id = "pedistal2"
+                    position = "1 -1.5 0"
+                    rotation = "0 0 0"
+                    geometry = "primative:box; width:0.6; height:3; depth:0.6;"
+                    material="color:#484b4f">
+             </a-entity>
+        </a-scene>
+    </body>
+</html>
